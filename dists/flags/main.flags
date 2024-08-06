@@ -106,6 +106,7 @@ fail2ban-server attach_disconnected,complain
 fdisk complain
 firewall-applet attach_disconnected,complain
 firewall-config complain
+firewalld attach_disconnected,complain
 flameshot complain
 flatpak attach_disconnected,mediate_deleted,complain
 flatpak-app attach_disconnected,mediate_deleted,complain
@@ -173,6 +174,11 @@ gsettings complain
 gvfsd-dav complain
 gvfsd-wsdd complain
 hostnamectl complain
+hyprctl complain
+hyprlock complain
+hyprpaper attach_disconnected,complain
+hyprpicker complain
+hyprpm complain
 ibus-engine-table complain
 ibus-memconf attach_disconnected,complain
 im-launch complain
@@ -249,11 +255,13 @@ nmap complain
 nmcli complain
 nvidia-detector complain
 nvidia-persistenced complain
+nvidia-smi complain
 okular complain
 ollama attach_disconnected,complain
 os-prober attach_disconnected,complain
 package-data-downloader complain
 packagekitd attach_disconnected,complain
+pacman-hook-dkms complain
 pam_kwallet_init complain
 pam-tmpdir-helper complain
 passim complain
@@ -305,6 +313,7 @@ steam-launch attach_disconnected,complain
 steam-launcher attach_disconnected,complain
 steam-runtime attach_disconnected,complain
 steamerrorreporter attach_disconnected,complain
+strawberry attach_disconnected,mediate_deleted,complain
 sulogin complain
 switcherooctl complain
 swtpm complain
@@ -351,6 +360,7 @@ systemd-portabled complain
 systemd-remount-fs complain
 systemd-resolve complain
 systemd-shutdown complain
+systemd-sleep-tlp complain
 systemd-socket-proxyd complain
 systemd-udevd attach_disconnected,complain
 systemd-user-sessions complain
@@ -358,6 +368,7 @@ systemd-userwork attach_disconnected,complain
 systemsettings complain
 totem attach_disconnected,complain
 tracker-writeback complain
+transmission complain
 udev-dmi-memory-id complain
 udisksctl complain
 udisksd attach_disconnected,complain
@@ -373,6 +384,7 @@ virtnetworkd complain,attach_disconnected
 virtnodedevd attach_disconnected,complain
 virtsecretd attach_disconnected,complain
 virtstoraged attach_disconnected,complain
+waybar attach_disconnected,complain
 wg complain
 wg-quick complain
 wsdd complain

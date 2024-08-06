@@ -44,9 +44,9 @@ profile gpg @{exec_path} {
   owner /etc/apt/keyrings/** rwkl -> /etc/apt/keyrings/**,
 
   #aa:only pacman
-  owner /etc/pacman.d/gnupg/gpg.conf r,
-  owner /etc/pacman.d/gnupg/pubring.gpg r,
-  owner /etc/pacman.d/gnupg/trustdb.gpg r,
+  /etc/pacman.d/gnupg/gpg.conf r,
+  /etc/pacman.d/gnupg/pubring.gpg r,
+  /etc/pacman.d/gnupg/trustdb.gpg r,
 
   owner /var/lib/*/gnupg/ rw,
   owner /var/lib/*/gnupg/** rwkl -> /var/lib/*/gnupg/**,
@@ -60,10 +60,12 @@ profile gpg @{exec_path} {
   owner /var/tmp/zypp.@{rand6}/** rwkl -> /var/tmp/zypp.@{rand6}/**,
 
   #aa:exclude ubuntu
-  owner @{tmp}/ostree-gpg-*/ r,
-  owner @{tmp}/ostree-gpg-*/** rwkl -> /tmp/ostree-gpg-*/**,
+  owner @{tmp}/ostree-gpg-@{rand6}/ r,
+  owner @{tmp}/ostree-gpg-@{rand6}/** rwkl -> /tmp/ostree-gpg-@{rand6}/**,
 
-  owner @{tmp}/tmp.[a-zA-Z0-9]* rw,
+  owner /tmp/@{int}@{int} rw,
+
+  owner @{run}/user/@{uid}/gnupg/d.*/ rw,
 
   owner @{PROC}/@{pid}/fd/ r,
   owner @{PROC}/@{pid}/task/@{tid}/comm rw,

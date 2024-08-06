@@ -51,10 +51,7 @@ profile gnome-session-binary @{exec_path} flags=(attach_disconnected) {
   @{exec_path} mr,
 
   @{sh_path}                                     rix,
-  @{bin}/dbus-daemon                             rPx -> dbus-session,
-  @{bin}/env                                     rix,
-  @{bin}/gnome-session                           rPx,
-  @{bin}/gnome-shell                             rPx,
+  @{bin}/tput                                    rix,
   @{bin}/session-migration                       rPx,
 
   @{lib}/gnome-session-check-accelerated               rix,
@@ -126,6 +123,7 @@ profile gnome-session-binary @{exec_path} flags=(attach_disconnected) {
     /usr/games/**                 PUx,
 
     /dev/tty rw,
+    /dev/tty@{int} rw,
 
     include if exists <usr/gnome-session-binary_open.d>
     include if exists <local/gnome-session-binary_open>

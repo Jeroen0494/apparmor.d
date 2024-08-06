@@ -78,6 +78,7 @@ profile gnome-software @{exec_path} {
   owner @{user_cache_dirs}/flatpak/{,**} rwl,
   owner @{user_cache_dirs}/gnome-software/{,**} rw,
 
+  owner @{user_config_dirs}/flatpak/{,**} r,
   owner @{user_config_dirs}/pulse/*.conf r,
 
   owner @{user_share_dirs}/ r,
@@ -86,8 +87,8 @@ profile gnome-software @{exec_path} {
   owner @{user_share_dirs}/flatpak/repo/** rwl -> @{user_share_dirs}/flatpak/repo/**,
   owner @{user_share_dirs}/gnome-software/{,**} rw,
 
-  owner @{tmp}/ostree-gpg-*/ rw,
-  owner @{tmp}/ostree-gpg-*/** rwkl -> /tmp/ostree-gpg-*/**,
+  owner @{tmp}/ostree-gpg-@{rand6}/ rw,
+  owner @{tmp}/ostree-gpg-@{rand6}/** rwkl -> /tmp/ostree-gpg-@{rand6}/**,
   owner @{tmp}/#@{int} rw,
 
   owner @{run}/user/@{uid}/.dbus-proxy/ rw,
@@ -125,8 +126,8 @@ profile gnome-software @{exec_path} {
     @{HOME}/@{XDG_GPG_DIR}/*.conf r,
 
           @{tmp}/ r,
-    owner @{tmp}/ostree-gpg-*/ r,
-    owner @{tmp}/ostree-gpg-*/** rwkl -> /tmp/ostree-gpg-*/**,
+    owner @{tmp}/ostree-gpg-@{rand6}/ r,
+    owner @{tmp}/ostree-gpg-@{rand6}/** rwkl -> /tmp/ostree-gpg-@{rand6}/**,
 
     owner @{run}/user/@{uid}/gnupg/ w,
 

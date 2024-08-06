@@ -30,6 +30,9 @@ profile firefox-crashreporter @{exec_path} flags=(attach_disconnected) {
 
   @{exec_path} mr,
 
+  @{bin}/curl rix,
+  @{bin}/mv   rix,
+
   @{lib_dirs}/minidump-analyzer rPx,
 
   @{bin}/mv rix,
@@ -50,6 +53,8 @@ profile firefox-crashreporter @{exec_path} flags=(attach_disconnected) {
   owner @{tmp}/firefox/.parentlock w,
 
   owner /dev/shm/org.mozilla.ipc.@{int}.@{int} r,
+
+  owner @{PROC}/@{pid}/cmdline r,
 
   /dev/dri/card@{int} rw,
   /dev/dri/renderD128 rw,
