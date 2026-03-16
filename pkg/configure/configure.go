@@ -89,6 +89,15 @@ func (p Configure) Apply() ([]string, error) {
 		if err := p.removeFiles(remove); err != nil {
 			return res, err
 		}
+
+		// @{pci_bus} was upstreamed in 5.0, and backported to 4.1
+		path := p.RootApparmor.Join("tunables/multiarch.d/system")
+		out, err := path.ReadFileAsString()
+		if err != nil {
+			return res, err
+		}
+		out = strings.ReplaceAll(out, "@{pci_bus}=pci@{hex4}:@{hex2}", "")
+		return res, path.WriteFile([]byte(out))
 	}
 	if p.Version >= 5.0 {
 		remove := []string{
@@ -108,14 +117,6 @@ func (p Configure) Apply() ([]string, error) {
 			return res, err
 		}
 
-		// @{pci_bus} was upstreamed in 5.0
-		path := p.RootApparmor.Join("tunables/multiarch.d/system")
-		out, err := path.ReadFileAsString()
-		if err != nil {
-			return res, err
-		}
-		out = strings.ReplaceAll(out, "@{pci_bus}=pci@{hex4}:@{hex2}", "")
-		return res, path.WriteFile([]byte(out))
 	}
 	return res, nil
 }
